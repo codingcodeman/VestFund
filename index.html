@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VestFund</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        overflow: hidden; 
+      }
+      nav {
+        width: 100%; 
+        max-width: 1650px;
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        padding: 15px 30px;
+        position: relative;
+      }
+
+      .vf-logo-dropdown-icon {
+        position: relative;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+      }
+
+      .vf-dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .vf-logo-dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 160px;
+        right: 0;
+        top: 30px;
+        border-radius: 10px;
+        border: 2px solid black;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .vf-dropdown:hover .vf-logo-dropdown-content {
+        display: block;
+      }
+
+      .vf-dropdown-individual-text {
+        color: black;
+        text-align: center;
+        padding: 15px 20px;
+        font-size: normal;
+        display: block;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .vf-dropdown-individual-text:hover {
+        background-color: aquamarine;
+      }
+
+      .main-vf-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 60vh;
+        text-align: center;
+      }
+
+      .get-started-button {
+        padding: 15px 30px;
+        font-size: 2rem;
+        font-weight: bold;
+        border-radius: 30px;
+        background-color: #3a4ed0;
+        border-color: black;
+        color: white;
+        cursor: pointer;
+        border: 1px solid black;
+        transition: background-color 0.3s ease;
+      }
+
+      .get-started-button:hover {
+        background-color: #919ada;
+      }
+
+      .login-button {
+        padding: 10px 20px;
+        border-radius: 20px;
+        background-color: white;
+        color: #3a4ed0;
+        font-weight: bold;
+        border: 2px solid black;
+        cursor: pointer;
+      }
+
+      h1 {
+        font-size: 6rem;
+        margin-bottom: 15px;
+      }
+
+      h2 {
+        font-weight: normal;
+        font-style: italic;
+        margin-bottom: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="vf-dropdown">
+        <span class="vf-logo-dropdown-icon">VESTFUND ▼</span>
+        <div class="vf-logo-dropdown-content">
+          <a href="account.html" class="vf-dropdown-individual-text">Account</a>
+          <a href="learn.html" class="vf-dropdown-individual-text">Learning</a>
+          <a href="summary.html" class="vf-dropdown-individual-text">Summary</a>
+        </div>
+      </div>
+      <a href="login.html">
+        <button class="nav-button">Login</button>
+      </a>
+    </nav>
+
+    <div class="main-vf-content">
+      <h1>VESTFUND</h1>
+      <h2>Invest wisely and secure your future</h2>
+      <a href="register.html">
+        <button class="get-started-button">Get Started</button>
+      </a>
+    </div>
+  </body>
+</html>
