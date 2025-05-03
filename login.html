@@ -86,9 +86,7 @@
 </head>
 <body>
   <div class="home-button">
-    <a href="index.html">
-      <button>Home</button>
-    </a>
+    <a href="index.html" class="nav-button">Home</a>
   </div>
   <div class="container">
     <div class="title">Enter Your Credentials</div>
@@ -101,19 +99,39 @@
   <script>
     function login(e) {
       e.preventDefault();
-      const email = document.getElementById('login_email').value;
+  
+      const email = document.getElementById('login_email').value.trim().toLowerCase();
       const password = document.getElementById('login_password').value;
 
-      const storedEmail = localStorage.getItem('vestfund_email');
-      const storedPassword = localStorage.getItem('vestfund_password');
-
-      if (email === storedEmail && password === storedPassword) {
-        alert('Login successful!');
+      if (email === "admin@vestfund.com" && password === "admin") {
+        localStorage.setItem('vestfund_email', email);
+        localStorage.setItem('vestfund_password', password);
+        localStorage.setItem('vestfund_logged_in', 'true');
+        alert("Admin login successful!");
+        window.location.href = "admin.html";
+        return;
+      }
+  
+      const userData = localStorage.getItem(`vestfund_user_${email}`);
+      if (!userData) {
+        alert("No account found for this email.");
+        return;
+      }
+  
+      const user = JSON.parse(userData);
+      if (user.password === password) {
+        localStorage.setItem('vestfund_email', email);
+        localStorage.setItem('vestfund_logged_in', 'true');
+        localStorage.setItem('vestfund_name', user.name || '');
+        alert("Login successful!");
         window.location.href = "account.html";
-      } else {
-        alert('Invalid credentials. Try again.');
+      }
+      else {
+        alert("Invalid credentials.");
       }
     }
-  </script>
+  </script>  
+  <div id="user-status" class="user-status"></div>
+  <script src="status.js"></script>
 </body>
 </html>

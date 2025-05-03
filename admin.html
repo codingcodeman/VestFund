@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - VestFund Users</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 40px;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 12px;
+      border: 1px solid white;
+    }
+    th {
+      background-color: #3a4ed0;
+      color: white;
+    }
+    td {
+      background-color: #111;
+    }
+    .home-button {
+      position: fixed;
+      top: 20px;
+      left: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔐 Admin Panel – All Stored VestFund Users</h1>
+  <table id="user-table">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div class="home-button">
+    <a href="index.html" class="nav-button">Home</a>
+  </div>
+
+  <script>
+    const loggedInEmail = localStorage.getItem("vestfund_email");
+    const loggedInPassword = localStorage.getItem("vestfund_password");
+
+    const isAdmin = loggedInEmail === "admin@vestfund.com" && loggedInPassword === "admin";
+
+    if (!isAdmin) {
+      document.body.innerHTML = "<h2>Access Denied</h2>";
+    } else {
+      const table = document.querySelector("#user-table tbody");
+      Object.keys(localStorage).forEach(key => {
+        if (key.startsWith("vestfund_user_")) {
+          const userData = JSON.parse(localStorage.getItem(key));
+          const email = key.replace("vestfund_user_", "");
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${email}</td>
+            <td>${userData.password || "(no password saved)"}</td>
+            <td>${userData.name || "—"}</td>
+          `;
+          table.appendChild(row);
+        }
+      });
+    }
+  </script>
+</body>
+</html>

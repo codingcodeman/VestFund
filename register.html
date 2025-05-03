@@ -64,9 +64,7 @@
 </head>
 <body>
   <div class="home-button">
-    <a href="index.html">
-      <button class="login-button">Home</button>
-    </a>
+    <a href="index.html" class="nav-button">Home</a>
   </div>
   <div class="container">
     <div class="title">Create an Account</div>
@@ -79,15 +77,34 @@
   <script>
     function register(e) {
       e.preventDefault();
-      const email = document.getElementById('email').value;
+  
+      const email = document.getElementById('email').value.trim().toLowerCase();
       const password = document.getElementById('password').value;
-
+  
       localStorage.setItem('vestfund_email', email);
       localStorage.setItem('vestfund_password', password);
-
+      localStorage.setItem('vestfund_logged_in', 'true');
+  
+      const userData = {
+        password: password,
+        name: "",
+        age: "",
+        location: "",
+        income: "",
+        saved: "",
+        portfolio: "",
+        experience: "",
+        diversify: "",
+        investments: []
+      };
+  
+      localStorage.setItem(`vestfund_user_${email}`, JSON.stringify(userData));
+  
       alert('Account created!');
       window.location.href = "account.html";
     }
-  </script>
+  </script>  
+  <div id="user-status" class="user-status"></div>
+  <script src="status.js"></script>
 </body>
 </html>

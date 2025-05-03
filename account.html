@@ -23,19 +23,6 @@
       z-index: 1000;
     }
 
-    .home-button-link {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: white;
-      background-color: transparent;
-      border: 2px solid black;
-      border-radius: 10px;
-      padding: 6px 14px;
-      text-decoration: none;
-      cursor: pointer;
-      display: inline-block;
-    }
-
     .account-container {
       margin: 80px auto 40px;
       max-width: 600px;
@@ -50,12 +37,6 @@
       -webkit-text-stroke: 1px black;
       margin-bottom: 25px;
       text-align: center;
-    }
-
-    account {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
     }
 
     label {
@@ -111,12 +92,12 @@
 </head>
 <body>
   <div class="home-button">
-    <a href="index.html" class="home-button-link">Home</a>
-  </div>  
+    <a href="index.html" class="nav-button">Home</a>
+  </div>
+
   <div class="account-container">
     <div class="account-title">Your Financial Info</div>
     <form onsubmit="submitForm(event)">
-
       <label for="name">Full Name</label>
       <input type="text" id="name" required>
 
@@ -176,10 +157,55 @@
   <script>
     function submitForm(e) {
       e.preventDefault();
-      alert("Your information has been saved!");
-      window.location.href = "summary.html";
+      const email = localStorage.getItem('vestfund_email');
+      if (!email) {
+        alert("No user is logged in.");
+        return;
+      }
+
+      const userData = {
+        name: document.getElementById('name').value,
+        age: document.getElementById('age').value,
+        location: document.getElementById('location').value,
+        income: document.getElementById('income').value,
+        saved: document.getElementById('saved').value,
+        portfolio: document.getElementById('portfolio').value,
+        experience: document.getElementById('experience').value,
+        diversify: document.getElementById('diversify').value,
+        investments: Array.from(document.querySelectorAll('.checkbox-group input[type="checkbox"]:checked')).map(cb => cb.value)
+      };
+
+      localStorage.setItem(`vestfund_user_${email}`, JSON.stringify(userData));
+      localStorage.setItem('vestfund_name', userData.name);
+
+      alert("Information saved!");
+      window.location.href = "info.html";
     }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const email = localStorage.getItem('vestfund_email');
+      const data = JSON.parse(localStorage.getItem(`vestfund_user_${email}`));
+      if (!data) return;
+
+      document.getElementById('name').value = data.name || '';
+      document.getElementById('age').value = data.age || '';
+      document.getElementById('location').value = data.location || '';
+      document.getElementById('income').value = data.income || '';
+      document.getElementById('saved').value = data.saved || '';
+      document.getElementById('portfolio').value = data.portfolio || '';
+      document.getElementById('experience').value = data.experience || '';
+      document.getElementById('diversify').value = data.diversify || '';
+
+      const allCheckboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]');
+      allCheckboxes.forEach(cb => {
+        if (data.investments && data.investments.includes(cb.value)) {
+          cb.checked = true;
+        }
+      });
+    });
   </script>
 
+  <div id="user-status" class="user-status"></div>
+  <script src="status.js"></script>
 </body>
 </html>

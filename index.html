@@ -122,7 +122,7 @@
         <span class="vf-logo-dropdown-icon">VESTFUND ▼</span>
         <div class="vf-logo-dropdown-content">
           <a href="account.html" class="vf-dropdown-individual-text">Account</a>
-          <a href="learn.html" class="vf-dropdown-individual-text">Learning</a>
+          <a href="info.html" class="vf-dropdown-individual-text">Learning</a>
           <a href="summary.html" class="vf-dropdown-individual-text">Summary</a>
         </div>
       </div>
@@ -138,5 +138,20 @@
         <button class="get-started-button">Get Started</button>
       </a>
     </div>
+    <script>
+      function logout() {
+        localStorage.removeItem('vestfund_logged_in');
+        localStorage.removeItem('vestfund_name');
+        localStorage.removeItem('vestfund_email');
+        localStorage.removeItem('vestfund_password');
+        alert("You have been logged out.");
+        window.location.href = "index.html";
+      }
+    </script>    
+    <div id="user-status" class="user-status"></div>
+    <script src="status.js"></script>
+    <div class="logout-button-wrapper">
+      <button onclick="logout()" class="nav-button">Logout</button>
+    </div>    
   </body>
 </html>

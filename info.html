@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Investment Learning - VestFund</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="home-button">
+    <a href="index.html" class="nav-button">Home</a>
+  </div> 
+  <div class="user-status" id="user-status"></div>
+  <h1 class="learn-header">Learn About Investments</h1>
+
+  <div class="investment-grid">
+    <div class="investment-card">
+      <h2>Stocks</h2>
+      <p>Stocks are shares of ownership in a company. Investing in stocks allows you to earn returns through capital gains and dividends.</p>
+      <label><input type="checkbox" name="investment" value="stocks"> Invest</label>
+    </div>
+    <div class="investment-card">
+      <h2>Roth IRA</h2>
+      <p>A Roth IRA is a retirement account where you contribute after-tax income, and withdrawals are tax-free after age 59½.</p>
+      <label><input type="checkbox" name="investment" value="roth"> Invest</label>
+    </div>
+    <div class="investment-card">
+      <h2>Traditional IRA</h2>
+      <p>Contributions to a Traditional IRA may be tax-deductible, and investment grows tax-deferred until withdrawal.</p>
+      <label><input type="checkbox" name="investment" value="traditional"> Invest</label>
+    </div>
+    <div class="investment-card">
+      <h2>Life Insurance</h2>
+      <p>Provides a lump sum to your beneficiaries upon your death and can be used as a long-term investment tool with cash value growth.</p>
+      <label><input type="checkbox" name="investment" value="insurance"> Invest</label>
+    </div>
+    <div class="investment-card">
+      <h2>Mutual Funds</h2>
+      <p>Mutual funds pool money from many investors to buy a diversified portfolio of stocks, bonds, or other securities.</p>
+      <label><input type="checkbox" name="investment" value="mutual"> Invest</label>
+    </div>
+    <div class="investment-card">
+      <h2>Index Funds</h2>
+      <p>Index funds replicate the performance of a specific market index like the S&P 500, offering low-cost diversification.</p>
+      <label><input type="checkbox" name="investment" value="index"> Invest</label>
+    </div>
+    <div class="investment-card">
+      <h2>Bonds</h2>
+      <p>Bonds are fixed-income securities that represent a loan from an investor to a borrower, usually a corporation or government.</p>
+      <label><input type="checkbox" name="investment" value="bonds"> Invest</label>
+    </div>
+    <div class="investment-card">
+      <h2>ETFs</h2>
+      <p>Exchange-Traded Funds are similar to mutual funds but trade on stock exchanges. They offer diversification and low costs.</p>
+      <label><input type="checkbox" name="investment" value="etf"> Invest</label>
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const selectedInvestments = JSON.parse(localStorage.getItem('vestfund_investments') || '[]');
+  
+      const checkboxes = document.querySelectorAll('input[type="checkbox"][name="investment"]');
+  
+      checkboxes.forEach(box => 
+      {
+        if (selectedInvestments.includes(box.value)) {
+          box.checked = true;
+          box.disabled = true;
+          box.parentElement.style.opacity = "0.5";
+        }
+      });
+    });
+  </script>  
+  <script src="status.js"></script>
+</body>
+</html>
