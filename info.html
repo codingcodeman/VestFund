@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
+    <!--Creates learning page of website-->
 <head>
   <meta charset="UTF-8">
   <title>Investment Learning - VestFund</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!--Creates home button-->
   <div class="home-button">
     <a href="index.html" class="nav-button">Home</a>
   </div> 
+  <!--Puts information about each type of investment with checkbox below them-->
   <div class="user-status" id="user-status"></div>
   <h1 class="learn-header">Learn About Investments</h1>
 
@@ -54,6 +57,7 @@
       <label><input type="checkbox" name="investment" value="etf"> Invest</label>
     </div>
   </div>
+  <!--Creates the greyed out boxes-->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const selectedInvestments = JSON.parse(localStorage.getItem('vestfund_investments') || '[]');
@@ -70,6 +74,7 @@
       });
     });
   </script>  
+  <!--References JS-->
   <script src="status.js"></script>
 </body>
 </html>

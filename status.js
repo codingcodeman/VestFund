@@ -1,3 +1,4 @@
+//Creates the logic for the status bar on the top
 document.addEventListener('DOMContentLoaded', () => {
     const statusElement = document.getElementById('user-status');
     const loggedIn = localStorage.getItem('vestfund_logged_in') === 'true';

@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
+  <!--Creates the account page of the website-->
 <head>
   <meta charset="UTF-8">
   <title>VestFund - Personal Info</title>
+  <!--References CSS-->
   <link rel="stylesheet" href="style.css">
+  <!--Does all of the style for the different aspects of the page-->
   <style>
     body {
       margin: 0;
@@ -91,10 +94,11 @@
   </style>
 </head>
 <body>
+  <!--Creates home button-->
   <div class="home-button">
     <a href="index.html" class="nav-button">Home</a>
   </div>
-
+<!--Creates the account form-->
   <div class="account-container">
     <div class="account-title">Your Financial Info</div>
     <form onsubmit="submitForm(event)">
@@ -118,7 +122,7 @@
         <span>$</span>
         <input type="number" id="saved" min="0" step="100">
       </div>
-
+      <!--Creates the checkboxes for investments-->
       <label>Current Investments</label>
       <div class="checkbox-group">
         <label><input type="checkbox" value="Stocks"> Stocks</label>
@@ -153,7 +157,7 @@
       <button type="submit">Save & Continue</button>
     </form>
   </div>
-
+  <!--Creates the actual form being submitted to store the info-->
   <script>
     function submitForm(e) {
       e.preventDefault();
@@ -181,7 +185,6 @@
       alert("Information saved!");
       window.location.href = "info.html";
     }
-
     document.addEventListener("DOMContentLoaded", () => {
       const email = localStorage.getItem('vestfund_email');
       const data = JSON.parse(localStorage.getItem(`vestfund_user_${email}`));
@@ -204,7 +207,7 @@
       });
     });
   </script>
-
+  <!--References JS-->
   <div id="user-status" class="user-status"></div>
   <script src="status.js"></script>
 </body>

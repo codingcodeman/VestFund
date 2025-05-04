@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
+  <!--Creates the homepage of the website-->
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VestFund</title>
+    <!--References CSS-->
     <link rel="stylesheet" href="style.css">
+    <!--Creates the looks for all of the different style options-->
     <style>
       html, body {
         margin: 0;
@@ -118,14 +121,17 @@
   </head>
   <body>
     <nav>
+      <!--Creates the dropdown menu for the VESTFUND on the top left corner-->
       <div class="vf-dropdown">
         <span class="vf-logo-dropdown-icon">VESTFUND ▼</span>
         <div class="vf-logo-dropdown-content">
+          <!--Links all of the other pages to the dropdown menu-->
           <a href="account.html" class="vf-dropdown-individual-text">Account</a>
           <a href="info.html" class="vf-dropdown-individual-text">Learning</a>
           <a href="summary.html" class="vf-dropdown-individual-text">Summary</a>
         </div>
       </div>
+      <!--Creates the login button-->
       <a href="login.html">
         <button class="nav-button">Login</button>
       </a>
@@ -134,10 +140,12 @@
     <div class="main-vf-content">
       <h1>VESTFUND</h1>
       <h2>Invest wisely and secure your future</h2>
+      <!--Creates the register button-->
       <a href="register.html">
         <button class="get-started-button">Get Started</button>
       </a>
     </div>
+    <!--Creates the logout button-->
     <script>
       function logout() {
         localStorage.removeItem('vestfund_logged_in');

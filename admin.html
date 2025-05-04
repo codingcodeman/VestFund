@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <!--Creates the admin page with the list of emails, passwords, and names that are currently stored-->
 <head>
   <meta charset="UTF-8">
   <title>Admin - VestFund Users</title>
@@ -50,17 +51,16 @@
     </thead>
     <tbody></tbody>
   </table>
-
+  <!--Creates the home button-->
   <div class="home-button">
     <a href="index.html" class="nav-button">Home</a>
   </div>
-
+  <!--Stores all of the info and creates the admin login-->
   <script>
     const loggedInEmail = localStorage.getItem("vestfund_email");
     const loggedInPassword = localStorage.getItem("vestfund_password");
 
     const isAdmin = loggedInEmail === "admin@vestfund.com" && loggedInPassword === "admin";
-
     if (!isAdmin) {
       document.body.innerHTML = "<h2>Access Denied</h2>";
     } else {

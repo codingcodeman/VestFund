@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
+  <!--Creates the register page-->
 <head>
   <meta charset="UTF-8">
   <title>Register - VestFund</title>
+  <!--References CSS-->
   <link rel="stylesheet" href="style.css">
+  <!--Creates the style for the register page-->
   <style>
     body {
       margin: 0;
@@ -63,10 +66,12 @@
   </style>
 </head>
 <body>
+  <!--Creates home button-->
   <div class="home-button">
     <a href="index.html" class="nav-button">Home</a>
   </div>
   <div class="container">
+    <!--Prompts user to create an account-->
     <div class="title">Create an Account</div>
     <form onsubmit="register(event)">
       <input type="email" id="email" placeholder="Email" required>
@@ -74,6 +79,7 @@
       <button type="submit">Register</button>
     </form>
   </div>
+  <!--Actual register function-->
   <script>
     function register(e) {
       e.preventDefault();
@@ -104,6 +110,7 @@
       window.location.href = "account.html";
     }
   </script>  
+  <!--References JS-->
   <div id="user-status" class="user-status"></div>
   <script src="status.js"></script>
 </body>
